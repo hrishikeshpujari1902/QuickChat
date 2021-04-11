@@ -21,6 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -35,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
     private EditText mConfirmPasswordView;
+    private DatabaseReference mDatabaseReference;
 
     // Firebase instance variables
     private FirebaseAuth mAuth;
@@ -141,6 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
                     showErrorDialog("Registration Attempt Failed");
                 }else{
                     saveDisplayName();
+                    storeUser();
                     Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
                     finish();
                     startActivity(intent);
@@ -183,6 +187,17 @@ public class RegisterActivity extends AppCompatActivity {
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok,null)
                 .setIcon(android.R.drawable.ic_dialog_alert).show();
+
+    }
+    private void storeUser(){
+        String displayName = mUsernameView.getText().toString();
+        String email=mEmailView.getText().toString();
+        DisplayName user=new DisplayName(displayName,email);
+        FirebaseDatabase database= FirebaseDatabase.getInstance();
+        mDatabaseReference=database.getReference("users");
+        String id=mDatabaseReference.push().getKey();
+        mDatabaseReference.child(id).setValue(user);
+
 
     }
 

@@ -69,6 +69,7 @@ public class MainChatActivity extends AppCompatActivity {
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         mDisplayName=user.getDisplayName();
 
+
         if(mDisplayName==null){
             mDisplayName="Anonymous";
         }
