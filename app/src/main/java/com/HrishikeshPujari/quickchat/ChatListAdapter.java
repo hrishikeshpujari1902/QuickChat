@@ -29,11 +29,12 @@ public class ChatListAdapter extends BaseAdapter {
     private String mDisplayName;
     private ArrayList<DataSnapshot> mSnapshotList;
     private DatabaseReference databaseref;
+
     private ChildEventListener mListener=new ChildEventListener() {
         @Override
         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
             mSnapshotList.add(snapshot);
-            Log.d("FlashChat","snapshot received "+snapshot);
+            Log.d("QuickChat","snapshot received "+snapshot);
 
             notifyDataSetChanged();
         }

@@ -28,12 +28,19 @@
             android:name="com.HrishikeshPujari.quickchat.RegisterActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.HrishikeshPujari.quickchat.AfterLogin"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
 
         <activity
             android:name="com.HrishikeshPujari.quickchat.MainChatActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
+
+
 
     </application>
 

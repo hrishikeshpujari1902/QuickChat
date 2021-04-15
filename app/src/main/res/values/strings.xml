@@ -18,4 +18,5 @@
         completions."
     </string>
     <string name="sample_message">Hello!</string>
+    <string name="sample_message1">Username</string>
 </resources>

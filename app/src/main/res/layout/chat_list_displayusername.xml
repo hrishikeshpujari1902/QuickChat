@@ -10,6 +10,7 @@
     <TextView
         android:id="@+id/chatlist_displayname"
         android:layout_gravity="start"
+        android:textStyle="bold"
 
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
@@ -17,28 +18,22 @@
         android:layout_margin="5dip"
         android:padding="10dp"
         android:textSize="15sp"
-        android:text="@string/sample_message"
+        android:text="@string/sample_message1"
         android:textColor="@android:color/primary_text_light"
         />
 
     <TextView
         android:id="@+id/chatlist_email"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_gravity="end"
-        android:layout_marginStart="182dp"
-        android:layout_marginLeft="182dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_toEndOf="@+id/chatlist_displayname"
-        android:layout_toRightOf="@+id/chatlist_displayname"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:padding="10dp"
         android:text="@string/prompt_msg"
-        android:textColor="@color/cardview_dark_background"
+        android:textColor="#808080"
         android:textSize="15sp"
         android:textStyle="bold" />
 
