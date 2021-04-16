@@ -52,9 +52,6 @@ public class AfterLogin extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-
-
                 return false;
             }
 
@@ -81,14 +78,6 @@ public class AfterLogin extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
-
-
 
     private void getDisplayName(){
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
