@@ -27,6 +27,7 @@ public class ChatListAdapter extends BaseAdapter {
     private Activity mActivity;
     private DatabaseReference mDatabaseReference;
     private String mDisplayName;
+    private String Ref;
     private ArrayList<DataSnapshot> mSnapshotList;
     private DatabaseReference databaseref;
 
@@ -60,15 +61,16 @@ public class ChatListAdapter extends BaseAdapter {
         }
     };
 
-    public ChatListAdapter(Activity activity, String displayName) {
+    public ChatListAdapter(Activity activity, String displayName,String ref) {
+        Ref=ref;
         mActivity = activity;
         FirebaseDatabase database= FirebaseDatabase.getInstance();
-        databaseref= database.getReference("messages");
-        String id=databaseref.push().getKey();
-        databaseref.child(id);
+        databaseref= database.getReference();
+
+        databaseref.child("messages").child(Ref).addChildEventListener(mListener);
 
 
-        databaseref.addChildEventListener(mListener);
+
         mDisplayName = displayName;
         mSnapshotList=new ArrayList<>();
     }
@@ -136,8 +138,6 @@ public class ChatListAdapter extends BaseAdapter {
 
 
     }
-    public void cleanup(){
-        mDatabaseReference.removeEventListener(mListener);
-}
+
 }
 

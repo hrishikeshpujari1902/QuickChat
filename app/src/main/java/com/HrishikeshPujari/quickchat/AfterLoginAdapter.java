@@ -39,8 +39,9 @@ public class AfterLoginAdapter extends BaseAdapter implements Filterable {
     private ChildEventListener mListener=new ChildEventListener() {
         @Override
         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            if(!snapshot.getValue(DisplayName.class).getDisplayName().equals(mDisplayName)){
             mSnapshotList.add(snapshot);
-            mSnapshotListfiltered.add(snapshot);
+            mSnapshotListfiltered.add(snapshot);}
 
             Log.d("QuickChat","snapshot about user received "+snapshot);
             notifyDataSetChanged();
@@ -75,7 +76,7 @@ public class AfterLoginAdapter extends BaseAdapter implements Filterable {
         String id=databaseref.push().getKey();
         databaseref.child(id);
         databaseref.addChildEventListener(mListener);
-        mDisplayName = displayName;
+
         mSnapshotList=new ArrayList<>();
         mSnapshotListfiltered=new ArrayList<>();
     }

@@ -38,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPasswordView;
     private EditText mConfirmPasswordView;
     private DatabaseReference mDatabaseReference;
+    private String User_uid;
 
     // Firebase instance variables
     private FirebaseAuth mAuth;
@@ -190,9 +191,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     private void storeUser(){
+        FirebaseUser user1 = mAuth.getCurrentUser();
+        User_uid=user1.getUid();
         String displayName = mUsernameView.getText().toString();
         String email=mEmailView.getText().toString();
-        DisplayName user=new DisplayName(displayName,email);
+        DisplayName user=new DisplayName(displayName,email,User_uid);
         FirebaseDatabase database= FirebaseDatabase.getInstance();
         mDatabaseReference=database.getReference("users");
         String id=mDatabaseReference.push().getKey();

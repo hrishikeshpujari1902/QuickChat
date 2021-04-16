@@ -1,11 +1,13 @@
 package com.HrishikeshPujari.quickchat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,6 +29,7 @@ public class AfterLogin extends AppCompatActivity {
     private String mDisplayName;
     private ListView mListDisplayView;
     private String mEmail;
+    private String User_UID;
 
 
     private DatabaseReference mDatabaseReference;
@@ -61,6 +64,20 @@ public class AfterLogin extends AppCompatActivity {
                 return true;
             }
         });
+        mListDisplayView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DisplayName displayName =mAdapter.getItem(position);
+                Intent chatIntent=new Intent(AfterLogin.this,MainChatActivity.class);
+                chatIntent.putExtra("Sender",mDisplayName);
+                chatIntent.putExtra("Receiver_username",displayName.getDisplayName());
+                chatIntent.putExtra("Receiver_email",displayName.getEmail());
+                chatIntent.putExtra("Receiver_uid",displayName.getUid());
+                startActivity(chatIntent);
+
+
+            }
+        });
 
 
     }
@@ -76,6 +93,7 @@ public class AfterLogin extends AppCompatActivity {
     private void getDisplayName(){
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         mDisplayName=user.getDisplayName();
+
 
 
         if(mDisplayName==null){

@@ -32,7 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="10dp"
-        android:text="@string/prompt_msg"
+        android:text="@string/prompt_msg1"
         android:textColor="#808080"
         android:textSize="15sp"
         android:textStyle="bold" />
