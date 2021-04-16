@@ -87,13 +87,13 @@ public class AfterLoginAdapter extends BaseAdapter implements Filterable {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults=new FilterResults();
-                if(constraint==null||constraint.toString().isEmpty()||constraint.length()==0){
-
-
-                    filterResults.count=mSnapshotListfiltered.size();
-                    filterResults.values=mSnapshotListfiltered;
-
-
+                Log.d("constraint",constraint.toString());
+                if(constraint==null){
+                    filterResults.count=mSnapshotList.size();
+                    filterResults.values=mSnapshotList;
+                }else if(constraint.toString().isEmpty() || constraint.length()==0){
+                    filterResults.count=mSnapshotList.size();
+                    filterResults.values=mSnapshotList;
                 }else{
 
                     String searchstr=constraint.toString().toLowerCase();

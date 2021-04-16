@@ -17,9 +17,9 @@
         android:id="@+id/singleDisplaynameContainer_mainchat"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/chat_list_view"
         android:background="#BEBEBE"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,8 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_gravity="start"
-            android:gravity="center_vertical"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="start|top"
+            android:layout_toStartOf="@+id/email_mainchat"
+            android:layout_toLeftOf="@+id/email_mainchat"
+            android:gravity="top|left"
             android:padding="10dp"
             android:text="@string/sample_message1"
             android:textColor="@android:color/primary_text_light"
@@ -49,12 +53,13 @@
             android:padding="10dp"
             android:text="@string/prompt_msg1"
             android:textColor="#808080"
-            android:textSize="20sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/listFooter"

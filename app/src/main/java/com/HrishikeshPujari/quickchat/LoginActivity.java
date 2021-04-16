@@ -52,14 +52,23 @@ public class LoginActivity extends AppCompatActivity {
         // TODO: Grab an instance of FirebaseAuth
         mAuth=FirebaseAuth.getInstance();
 
+        autoSignIn();
+
     }
 
     // Executed when Sign in button pressed
     public void signInExistingUser(View v)   {
-        // TODO: Call attemptLogin() here
         attemptLogin();
+    }
 
-
+    //Auto Sign in
+    public void autoSignIn()   {
+        if(mAuth.getCurrentUser() != null){
+            Log.d("autosignin", "initiated");
+            Intent intent=new Intent(LoginActivity.this,AfterLogin.class);
+            finish();
+            startActivity(intent);
+        }
     }
 
     // Executed when Register button pressed
