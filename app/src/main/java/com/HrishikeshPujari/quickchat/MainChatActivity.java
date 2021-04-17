@@ -132,6 +132,12 @@ public class MainChatActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent myintent=new Intent(MainChatActivity.this,AfterLogin.class);
+        startActivity(myintent);
+    }
 
     @Override
     public void onStop() {
